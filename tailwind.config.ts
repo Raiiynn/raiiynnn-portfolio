@@ -1,7 +1,10 @@
-import type {Config} from 'tailwindcss';
+import type { Config } from 'tailwindcss';
 
-export default {
-  darkMode: ['class'],
+const config: Config = {
+  // PERBAIKAN DI SINI:
+  // Ubah dari ['class'] menjadi 'class' (string)
+  darkMode: 'class', 
+
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -97,3 +100,5 @@ export default {
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
+
+export default config;
