@@ -6,20 +6,24 @@ const RevealOnScroll = ({ children, delay = 0 }: { children: React.ReactNode; de
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, []);
+  const currentRef = ref.current; // Simpan ke variabel lokal DULU
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.unobserve(entry.target);
+      }
+    },
+    { threshold: 0.1 }
+  );
+
+  if (currentRef) observer.observe(currentRef);
+
+  return () => {
+    if (currentRef) observer.unobserve(currentRef); // Gunakan variabel lokal tadi
+  };
+}, []);
 
   return (
     <div
