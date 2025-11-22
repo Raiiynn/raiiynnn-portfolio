@@ -39,7 +39,6 @@ export const navigationLinks = [
 
 export const skillsData: { name: string; icon: string; color: string; }[] = [
   { name: 'HTML5', icon: 'https://cdn.simpleicons.org/html5/E34F26', color: 'bg-orange-500/10 text-orange-500' },
-  { name: 'CSS3', icon: 'https://cdn.simpleicons.org/css3/1572B6', color: 'bg-blue-500/10 text-blue-500' },
   { name: 'JavaScript', icon: 'https://cdn.simpleicons.org/javascript/F7DF1E', color: 'bg-yellow-500/10 text-yellow-500' },
   { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript/3178C6', color: 'bg-blue-600/10 text-blue-600' },
   { name: 'React', icon: 'https://cdn.simpleicons.org/react/61DAFB', color: 'bg-cyan-500/10 text-cyan-500' },
@@ -47,7 +46,7 @@ export const skillsData: { name: string; icon: string; color: string; }[] = [
   { name: 'Tailwind', icon: 'https://cdn.simpleicons.org/tailwindcss/06B6D4', color: 'bg-cyan-400/10 text-cyan-400' },
   { name: 'Python', icon: 'https://cdn.simpleicons.org/python/3776AB', color: 'bg-blue-500/10 text-blue-400' },
   { name: 'Git', icon: 'https://cdn.simpleicons.org/git/F05032', color: 'bg-red-500/10 text-red-500' },
-  { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql/4169E1', color: 'bg-blue-700/10 text-blue-400' },
+  { name: 'GoLang', icon: 'https://cdn.simpleicons.org/go/00ADD8', color: 'bg-emerald-500/10 text-emerald-400' },
 ];
 
 
