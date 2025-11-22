@@ -15,7 +15,9 @@ const AboutSection = () => {
                 </div>
                 
                 <div className="bg-slate-800/30 p-8 md:p-12 rounded-3xl border border-slate-700/50 hover:border-teal-500/20 transition-all backdrop-blur-sm shadow-xl group">
-                    <p>&quot;Teknologi bukan hanya tentang...&quot;</p>
+                    <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-10 text-center">
+                    "Teknologi bukan hanya tentang kode, tapi tentang bagaimana <span className="text-teal-400 font-semibold">memecahkan masalah</span> nyata."
+                    </p>
                     
                     <div className="grid md:grid-cols-3 gap-6">
                     {aboutStats.map((item, idx) => (
