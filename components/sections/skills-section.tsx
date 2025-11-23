@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import RevealOnScroll from '@/components/reveal-on-scroll';
 import { Database } from 'lucide-react';
 import { skillsData } from '@/app/data';
@@ -27,14 +27,35 @@ const SkillItem = ({ skill, idx }: { skill: { name: string; icon: string; color:
 
 
 const SkillsSection = () => {
-  return (
-    // PERBAIKAN: Tambahkan bg-slate-950, -mt-1, dan z-index
-    <section id="skills" className="relative py-32 -mt-1 z-20 bg-slate-950 overflow-hidden">
-        
-        {/* Opsional: Tambahan gradient halus di atas agar transisi makin mulus */}
-        <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-slate-950 to-transparent pointer-events-none z-10"></div>
+  const sectionRef = useRef<HTMLElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [opacity, setOpacity] = useState(0);
 
-        <div className="container mx-auto px-6 mb-12 relative z-20">
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+      if (!sectionRef.current) return;
+      const section = sectionRef.current;
+      const rect = section.getBoundingClientRect();
+      setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  return (
+    <section 
+        id="skills" 
+        ref={sectionRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setOpacity(1)}
+        onMouseLeave={() => setOpacity(0)}
+        className="relative py-32 -mt-1 z-20 bg-slate-950 overflow-hidden"
+    >
+        <div 
+            className="pointer-events-none absolute -inset-px transition duration-500"
+            style={{
+                opacity,
+                background: `radial-gradient(800px circle at ${position.x}px ${position.y}px, rgba(20, 184, 166, 0.06), transparent 50%)`
+            }}
+        />
+
+        <div className="container mx-auto px-6 mb-12 relative z-30">
            <RevealOnScroll>
             <div className="text-center">
               <div className="flex items-center justify-center gap-3 mb-4">
@@ -46,8 +67,7 @@ const SkillsSection = () => {
           </RevealOnScroll>
         </div>
 
-        <div className="relative w-full overflow-x-hidden z-20">
-          {/* Update warna gradient samping agar sesuai dengan background slate-950 */}
+        <div className="relative w-full overflow-x-hidden z-30">
           <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-slate-950 to-transparent z-30 pointer-events-none"></div>
           <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-slate-950 to-transparent z-30 pointer-events-none"></div>
           

@@ -12,13 +12,10 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    // WRAPPER GRADIENT BORDER
     <div className="group relative rounded-2xl p-[1px] bg-gradient-to-r from-teal-500 via-blue-500 to-purple-500 hover:shadow-2xl hover:shadow-teal-500/20 transition-all duration-500 h-full hover:-translate-y-2">
-      
-      {/* KARTU UTAMA (Background Gelap) */}
+
       <div className="bg-slate-900 rounded-2xl overflow-hidden h-full flex flex-col relative z-10">
-        
-        {/* BAGIAN GAMBAR (LOGO) */}
+
         <div className="h-64 bg-slate-800 relative overflow-hidden group-hover:h-72 transition-all duration-500">
           <Image
             src={project.imageUrl}
@@ -27,11 +24,9 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             className="object-cover group-hover:scale-110 transition-transform duration-700"
             data-ai-hint={project.imageHint}
           />
-          {/* Overlay Gradient agar teks putih terbaca jelas */}
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-80 z-10"></div>
         </div>
         
-        {/* BAGIAN KONTEN (TULISAN) - Centered */}
         <div className="p-8 flex flex-col flex-grow text-center items-center">
           
           <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">
@@ -42,7 +37,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             {project.description}
           </p>
           
-          {/* Tags - Centered */}
           <div className="flex flex-wrap gap-2 mb-8 mt-auto justify-center">
               {project.tags.map((tag, i) => (
                   <Badge key={i} variant="secondary" className="bg-slate-800/50 border border-slate-700/50 text-slate-300 px-3 py-1">
@@ -51,7 +45,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               ))}
           </div>
           
-          {/* Buttons - Centered */}
           <div className="flex items-center justify-center gap-4 pt-4 border-t border-slate-800/50 w-full">
             <TooltipProvider>
               <Tooltip>
