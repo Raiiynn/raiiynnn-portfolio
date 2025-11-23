@@ -26,7 +26,6 @@ const ProjectsSection = () => {
             onMouseLeave={() => setOpacity(0)}
             className="relative py-32 -mt-1 z-20 bg-slate-950 overflow-hidden"
         >
-            {/* Spotlight Effect */}
             <div 
                 className="pointer-events-none absolute -inset-px transition duration-500"
                 style={{

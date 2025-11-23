@@ -17,7 +17,6 @@ export interface Project {
   liveUrl?: string;
 }
 
-// Interface untuk Experience (Logo dihapus)
 export interface Experience {
   title: string;
   company: string;
@@ -57,7 +56,6 @@ export const skillsData: { name: string; icon: string; color: string; }[] = [
   { name: 'GoLang', icon: 'https://cdn.simpleicons.org/go/00ADD8', color: 'bg-emerald-500/10 text-emerald-400' },
 ];
 
-// DATA PENGALAMAN KERJA (Logo dihapus)
 export const experiences: Experience[] = [
   {
     title: "AIESEC Future Leaders",

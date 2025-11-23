@@ -1,6 +1,6 @@
 🚀 Raiiynnn Portfolio
 
-![Project Banner](./public/portfolio.jpg)
+![Project Banner](./public/portfolio.png)
 
 Sebuah portofolio interaktif yang menggabungkan desain modern, animasi halus, dan performa tinggi untuk menampilkan perjalanan profesional saya sebagai IT Solution Enabler.
 
