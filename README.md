@@ -1,12 +1,12 @@
 🚀 Raiiynnn Portfolio
 
-![Project Banner](./public/Cover.jpg)
+![Project Banner](./public/portfolio.jpg)
 
 Sebuah portofolio interaktif yang menggabungkan desain modern, animasi halus, dan performa tinggi untuk menampilkan perjalanan profesional saya sebagai IT Solution Enabler.
 
 🌟 Preview
 
-Jelajahi portofolio ini secara langsung di: [[Portfolio Saya](https://raiiynnn-portfolio.vercel.app/)]
+Jelajahi portofolio ini secara langsung di: Portfolio Saya(https://raiiynnn-portfolio.vercel.app/)]
 
 💻 Tech Stack
 
