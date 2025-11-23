@@ -17,11 +17,19 @@ export interface Project {
   liveUrl?: string;
 }
 
+// Interface untuk Experience (Logo dihapus)
+export interface Experience {
+  title: string;
+  company: string;
+  period: string;
+  description: string;
+}
+
 export const personalData = {
   name: "Daffa Raihan Ramadhan",
-  role: "Mahasiswa S1 Informatika",
+  role: "Undergraduate Informatics student",
   institution: "Universitas Islam Indonesia",
-  description: "Mahasiswa informatika yang bersemangat dalam rekayasa perangkat lunak dan web development modern.",
+  description: "Undergraduate Informatics student that passionate about web development and technology.",
   contact: {
     github: "https://github.com/Raiiynn",
     linkedin: "https://linkedin.com/in/daffaraihanramadhan",
@@ -49,6 +57,27 @@ export const skillsData: { name: string; icon: string; color: string; }[] = [
   { name: 'GoLang', icon: 'https://cdn.simpleicons.org/go/00ADD8', color: 'bg-emerald-500/10 text-emerald-400' },
 ];
 
+// DATA PENGALAMAN KERJA (Logo dihapus)
+export const experiences: Experience[] = [
+  {
+    title: "AIESEC Future Leaders",
+    company: "AIESEC in Indonesia",
+    period: "April 2024 - July 2024",
+    description: "Engaged in bi-weekly coaching sessions focused on soft and hard skills, including project management, public speaking, and strategic thinking.",
+  },
+  {
+    title: "Cyber Laboratory Assistant",
+    company: "Universitas Islam Indonesia",
+    period: "Nov 2025 - Present",
+    description: "Assist the Cyber ​​Laboratory in the development and management of the lab environment, guide students through hands-on cybersecurity and network system practices, explain basic security, networking, and programming concepts, and support the overall operational learning of the lab.",
+  },
+  {
+    title: "Freelance Web Developer",
+    company: "Self Employed",
+    period: "Jan 2024 - JPresent",
+    description: "Developed and maintained websites for small businesses and personal projects using HTML, CSS, JavaScript, and React. Collaborated with design user interfaces, and implement responsive web designs.",
+  }
+];
 
 export const projects: Project[] = [
   {
@@ -69,13 +98,12 @@ export const projects: Project[] = [
     liveUrl: "https://semangat-ujian.vercel.app/",
   },
   {
-    title: "Project Gamma",
-    description: "An e-commerce platform with a focus on user experience and performance, utilizing modern frontend technologies.",
-    tags: ["React", "TypeScript", "Node.js", "Express"],
-    imageUrl: "https://picsum.photos/seed/103/600/400",
+    title: "RakyatAdu",
+    description: "A software system designed to assist the government in addressing various local issues. Through this platform, citizens can easily report various issues they face in their neighborhoods, from damaged roads and security concerns to other issues that affect their daily quality of life.",
+    tags: ["Java", "PHP", "MySQL"],
+    imageUrl: "https://drive.google.com/uc?export=view&id=1aBRhpSc-0s-fuwsYpTbYa0-oDGLDhAYT",
     imageHint: "data analysis",
-    githubUrl: "#",
-    liveUrl: "#",
+    githubUrl: "https://github.com/Raiiynn/BitMinds-RakyatAdu",
   },
 ];
 
