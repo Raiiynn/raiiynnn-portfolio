@@ -5,8 +5,16 @@ import { personalData } from '@/app/data';
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10 text-center">
+    // PERBAIKAN: 
+    // 1. bg-slate-950: Warna background disamakan dengan section sebelumnya (hitam pekat)
+    // 2. -mt-1: Menarik section ke atas 1px untuk menutup celah garis putih
+    // 3. z-20: Mengatur tumpukan layer
+    <section id="contact" className="relative py-32 -mt-1 z-20 bg-slate-950 overflow-hidden">
+        
+        {/* Dekorasi: Efek cahaya (Glow) di belakang footer agar tidak terlalu sepi */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-teal-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+        <div className="container mx-auto px-6 relative z-30 text-center">
           <RevealOnScroll>
             <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent">Mari Berkolaborasi</h2>
             <p className="text-slate-400 max-w-xl mx-auto mb-12 text-lg">
@@ -28,16 +36,20 @@ const ContactSection = () => {
                   rel="noreferrer"
                   className={`group flex flex-col items-center gap-3 text-slate-400 transition-all duration-300 hover:-translate-y-2`}
                 >
-                  <div className={`p-5 rounded-2xl border border-slate-700 bg-slate-800/50 transition-all ${social.color}`}>
+                  <div className={`p-5 rounded-2xl border border-slate-700 bg-slate-800/50 transition-all ${social.color} relative z-40 shadow-lg`}>
                     <social.icon size={32} />
                   </div>
-                  <span className="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">{social.label}</span>
+                  <span className="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 duration-300">
+                    {social.label}
+                  </span>
                 </a>
               ))}
             </div>
           </RevealOnScroll>
+          
+
         </div>
-      </section>
+    </section>
   );
 };
 

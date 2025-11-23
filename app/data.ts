@@ -23,9 +23,9 @@ export const personalData = {
   institution: "Universitas Islam Indonesia",
   description: "Mahasiswa informatika yang bersemangat dalam rekayasa perangkat lunak dan web development modern.",
   contact: {
-    github: "https://github.com/",
-    linkedin: "https://linkedin.com/",
-    email: "daffa@example.com",
+    github: "https://github.com/Raiiynn",
+    linkedin: "https://linkedin.com/in/daffaraihanramadhan",
+    email: "daffaraihan72@gmail.com",
   },
 };
 
@@ -61,7 +61,7 @@ export const projects: Project[] = [
   },
   {
     title: "GameBoy Retro Web App",
-    description: "A Python-based data analysis tool that visualizes complex datasets using modern libraries.",
+    description: "A fully interactive GameBoy simulation built with React and TypeScript, featuring pixel-perfect CSS styling and responsive controls.",
     tags: ["Next Js", "TypeScript", "React"],
     imageUrl: "https://drive.google.com/uc?export=view&id=1Jcps6mRcxLz6fPWHCUclAz1zF38LfyrK",
     imageHint: "web dashboard",
@@ -80,7 +80,7 @@ export const projects: Project[] = [
 ];
 
 export const aboutStats = [
-  { icon: BookOpen, title: "Pendidikan", desc: "Informatika UII", color: "text-blue-400" },
-  { icon: Code, title: "Keahlian", desc: "Fullstack Web", color: "text-teal-400" },
-  { icon: Terminal, title: "Fokus", desc: "Clean Code", color: "text-purple-400" }
+  { icon: BookOpen, title: "Web Developer", desc: " ", color: "text-blue-400" },
+  { icon: Code, title: "Front End Developer", desc: " ", color: "text-teal-400" },
+  { icon: Terminal, title: "Back End Developer", desc: "  ", color: "text-purple-400" }
 ];

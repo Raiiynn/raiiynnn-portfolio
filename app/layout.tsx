@@ -3,7 +3,7 @@ import "./globals.css";
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: "Daffa's Digital Domain",
+  title: "Daffa | Portfolio",
   description: "Portfolio of Daffa Raihan Ramadhan, an informatics student at Universitas Islam Indonesia.",
 };
 

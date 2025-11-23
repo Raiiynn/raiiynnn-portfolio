@@ -8,8 +8,6 @@ const SkillItem = ({ skill, idx }: { skill: { name: string; icon: string; color:
   const [yOffset, setYOffset] = useState(0);
 
   useEffect(() => {
-    // This code runs only on the client, after the component has mounted.
-    // This prevents hydration mismatch.
     setYOffset(Math.sin(idx * 0.8) * 40);
   }, [idx]);
 
@@ -30,32 +28,38 @@ const SkillItem = ({ skill, idx }: { skill: { name: string; icon: string; color:
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-32">
-        <div className="container mx-auto px-6 mb-12">
+    // PERBAIKAN: Tambahkan bg-slate-950, -mt-1, dan z-index
+    <section id="skills" className="relative py-32 -mt-1 z-20 bg-slate-950 overflow-hidden">
+        
+        {/* Opsional: Tambahan gradient halus di atas agar transisi makin mulus */}
+        <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-slate-950 to-transparent pointer-events-none z-10"></div>
+
+        <div className="container mx-auto px-6 mb-12 relative z-20">
            <RevealOnScroll>
             <div className="text-center">
               <div className="flex items-center justify-center gap-3 mb-4">
                 <Database className="text-teal-400" size={28} />
-                <h2 className="text-3xl md:text-4xl font-bold">Tech Stack</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-100">Tech Stack</h2>
               </div>
               <p className="text-slate-400">Toolkit yang saya gunakan untuk mewujudkan ide.</p>
             </div>
           </RevealOnScroll>
         </div>
 
-        <div className="relative w-full overflow-x-hidden">
-          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none"></div>
+        <div className="relative w-full overflow-x-hidden z-20">
+          {/* Update warna gradient samping agar sesuai dengan background slate-950 */}
+          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-slate-950 to-transparent z-30 pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-slate-950 to-transparent z-30 pointer-events-none"></div>
           
           <div className="flex group py-12">
             <div className="flex animate-marquee hover:pause-animation">
-              {[...skillsData, ...skillsData].map((skill, idx) => (
+              {skillsData.concat(skillsData).map((skill, idx) => (
                 <SkillItem key={idx} skill={skill} idx={idx} />
               ))}
             </div>
           </div>
         </div>
-      </section>
+    </section>
   );
 };
 
