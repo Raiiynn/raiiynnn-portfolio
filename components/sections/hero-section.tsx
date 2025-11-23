@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import RevealOnScroll from '@/components/reveal-on-scroll';
 import { Sparkles, ChevronDown } from 'lucide-react';
@@ -7,7 +7,18 @@ import { personalData } from '@/app/data';
 
 const HeroSection = () => {
     const [typedText, setTypedText] = useState("");
-    const fullText = "Membangun Solusi Digital.";
+    const fullText = "IT Solution Enabler.";
+    
+    const sectionRef = useRef<HTMLElement>(null);
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [opacity, setOpacity] = useState(0);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+        if (!sectionRef.current) return;
+        const section = sectionRef.current;
+        const rect = section.getBoundingClientRect();
+        setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    };
 
     useEffect(() => {
         let index = 0;
@@ -20,9 +31,15 @@ const HeroSection = () => {
     }, []);
 
     return (
-        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            
-            {/* --- BAGIAN BACKGROUND --- */}
+        <section 
+            id="home" 
+            ref={sectionRef}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setOpacity(1)}
+            onMouseLeave={() => setOpacity(0)}
+            className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        >
+
             <div className="absolute inset-0 w-full h-full z-0 bg-slate-950">
                 <Image 
                     src="/Cover.jpg"
@@ -30,24 +47,22 @@ const HeroSection = () => {
                     fill
                     priority
                     quality={90}
-                    // Opacity dikurangi sedikit biar lebih gelap dan mudah diblend
                     className="object-cover opacity-40" 
                 />
-
-                {/* Overlay Gelap Utama */}
                 <div className="absolute inset-0 bg-slate-950/40 z-10 pointer-events-none"></div>
-
-                {/* ======================================================== */}
-                {/* NOTE: BAGIAN PENTING UNTUK MENYATUKAN WARNA             */}
-                {/* ======================================================== */}
-                {/* Kita membuat gradasi yang cukup tinggi (h-64) dari transparan
-                    ke warna solid slate-950 di paling bawah. Ini kuncinya. */}
                 <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-b from-transparent via-slate-950/80 to-slate-950 z-20 pointer-events-none"></div>
-                {/* ======================================================== */}
             </div>
-            
-            {/* --- KONTEN UTAMA (Tidak ada perubahan di sini) --- */}
+
+             <div 
+                className="pointer-events-none absolute -inset-px transition duration-500 z-20"
+                style={{
+                    opacity,
+                    background: `radial-gradient(800px circle at ${position.x}px ${position.y}px, rgba(20, 184, 166, 0.1), transparent 50%)`
+                }}
+            />
+
             <div className="container mx-auto px-6 text-center relative z-30 pt-20">
+                
                 <RevealOnScroll>
                     <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-slate-800/40 border border-slate-700/50 text-teal-400 text-sm font-medium backdrop-blur-md">
                         <Sparkles size={14} className="animate-pulse" /> 
@@ -72,7 +87,7 @@ const HeroSection = () => {
 
                 <RevealOnScroll delay={600}>
                     <p className="max-w-2xl mx-auto text-slate-300 mb-10 leading-relaxed text-lg drop-shadow-md">
-                        {personalData.role} di <span className="text-white font-semibold underline decoration-teal-500/50 underline-offset-4">{personalData.institution}</span>.
+                        {personalData.role} at <span className="text-white font-semibold underline decoration-teal-500/50 underline-offset-4">{personalData.institution}</span>.
                         <br className="hidden md:block" /> {personalData.description}
                     </p>
                 </RevealOnScroll>

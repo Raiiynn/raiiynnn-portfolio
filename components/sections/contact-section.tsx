@@ -1,24 +1,46 @@
 'use client';
+import React, { useState, useRef } from 'react';
 import RevealOnScroll from '@/components/reveal-on-scroll';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { personalData } from '@/app/data';
 
 const ContactSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [opacity, setOpacity] = useState(0);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+      if (!sectionRef.current) return;
+      const section = sectionRef.current;
+      const rect = section.getBoundingClientRect();
+      setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
   return (
-    // PERBAIKAN: 
-    // 1. bg-slate-950: Warna background disamakan dengan section sebelumnya (hitam pekat)
-    // 2. -mt-1: Menarik section ke atas 1px untuk menutup celah garis putih
-    // 3. z-20: Mengatur tumpukan layer
-    <section id="contact" className="relative py-32 -mt-1 z-20 bg-slate-950 overflow-hidden">
+    <section 
+        id="contact" 
+        ref={sectionRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setOpacity(1)}
+        onMouseLeave={() => setOpacity(0)}
+        className="relative py-32 -mt-1 z-20 bg-slate-950 overflow-hidden"
+    >
+
+        <div 
+            className="pointer-events-none absolute -inset-px transition duration-500"
+            style={{
+                opacity,
+                background: `radial-gradient(800px circle at ${position.x}px ${position.y}px, rgba(20, 184, 166, 0.06), transparent 50%)`
+            }}
+        />
         
-        {/* Dekorasi: Efek cahaya (Glow) di belakang footer agar tidak terlalu sepi */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-teal-500/10 blur-[100px] rounded-full pointer-events-none"></div>
 
         <div className="container mx-auto px-6 relative z-30 text-center">
           <RevealOnScroll>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent">Mari Berkolaborasi</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent">Let's Collaborate</h2>
             <p className="text-slate-400 max-w-xl mx-auto mb-12 text-lg">
-              Punya ide menarik atau ingin berdiskusi tentang proyek? Saya selalu terbuka untuk peluang baru.
+              Have an interesting idea or want to discuss a project? I'm always open to new opportunities.
             </p>
           </RevealOnScroll>
           
@@ -47,7 +69,10 @@ const ContactSection = () => {
             </div>
           </RevealOnScroll>
           
-
+          <div className="border-t border-slate-800 pt-8 mt-8">
+            <p className="text-slate-500 text-sm">
+            </p>
+          </div>
         </div>
     </section>
   );
